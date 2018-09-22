@@ -3,4 +3,22 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+  <table align="center">
+    <tr>
+      <td>
+        <img *ngIf="!deckOfCard.isEmpty()" src="assets/back.png" alt="image">
+        <img *ngIf="deckOfCard.isEmpty()" src="assets/empty.png" alt="image">
+      </td>
+      <td>
+          <img *ngIf="currentCard == undefined" src="assets/empty.png" alt="image">
+          <img *ngIf="currentCard != undefined" [src]="currentCard.image" alt="image">
+      </td>
+    </tr>
+    <tr>
+      <td><button (click)="onShuffle()">Shuffle</button></td>
+      <td><button (click)="onDrawACard()">Draw a Card</button></td>
+    </tr>
+  </table>
 </div>
+
+

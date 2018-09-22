@@ -28,7 +28,11 @@ export class CardDeck implements CardDeckInterface<number, Kinds> {
     } while(cardDeck.length > 0);
   };
 
-  dealOneCard(): Card | undefined {
+  drawACard(): Card | undefined {
     return this._shuffledCardDeck.pop();
+  }
+
+  isEmpty(): boolean {
+    return this._shuffledCardDeck.length == 0;
   }
 }

@@ -1,10 +1,14 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { CardDeckService } from '../cards/card-deck.service';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
+      ],
+      providers: [
+        CardDeckService
       ],
     }).compileComponents();
   }));
@@ -13,15 +17,15 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should have as title 'deck-of-cards'`, async(() => {
+  it(`should have as title 'Deck of Cards'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('deck-of-cards');
+    expect(app.title).toEqual('Deck of Cards');
   }));
   it('should render title in a h1 tag', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to deck-of-cards!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Deck of Cards!');
   }));
 });

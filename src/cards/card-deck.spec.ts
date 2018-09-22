@@ -30,7 +30,7 @@ describe('CardDeck', () => {
     var cardDeck = new CardDeck();
 
     for (var i = 0; i < 52; i++) {
-        var card = cardDeck.dealOneCard();
+        var card = cardDeck.drawACard();
         expect(cardDeck.cardDeck).toContain(card);
     }
   }));
@@ -39,7 +39,7 @@ describe('CardDeck', () => {
     var cardDeck = new CardDeck();
     cardDeck.shuffle();
     for (var i = 0; i < 52; i++) {
-        var card = cardDeck.dealOneCard();
+        var card = cardDeck.drawACard();
         expect(cardDeck.cardDeck).toContain(card);
     }
   }));
@@ -48,7 +48,7 @@ describe('CardDeck', () => {
     var cardDeck = new CardDeck();
     cardDeck.shuffle();
     for (var i = 0; i < 52; i++) {
-        var card = cardDeck.dealOneCard();
+        var card = cardDeck.drawACard();
         expect(cardDeck.cardDeck).toContain(card);
     }
   }));
@@ -57,10 +57,21 @@ describe('CardDeck', () => {
     var cardDeck = new CardDeck();
     cardDeck.shuffle();
     for (var i = 0; i < 52; i++) {
-        expect(cardDeck.dealOneCard()).toBeTruthy();
+        expect(cardDeck.drawACard()).toBeTruthy();
     }
 
-    expect(cardDeck.dealOneCard()).toBeUndefined();
+    expect(cardDeck.drawACard()).toBeUndefined();
+  }));
+
+  it('should return empty after 52 draw', async(() => {
+    var cardDeck = new CardDeck();
+    cardDeck.shuffle();
+    for (var i = 0; i < 52; i++) {
+        expect(cardDeck.isEmpty()).toBeFalsy();
+        expect(cardDeck.drawACard()).toBeTruthy();
+    }
+
+    expect(cardDeck.isEmpty()).toBeTruthy();
   }));
 
 });
